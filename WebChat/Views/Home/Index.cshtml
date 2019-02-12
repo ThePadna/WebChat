@@ -1,23 +1,14 @@
-﻿@page
-
-<div class="container">
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-6">&nbsp;</div>
-        <div class="col-6">
-            <!---    User..........<input type="text" id="userInput" />
-        <br />
-        Message...<input type="text" id="messageInput" />
-        <input type="button" id="sendButton" value="Send Message" />
-    </div>-->
-            <div class="row">
-                <div class="col-6">&nbsp;</div>
-                <div class="col-6">
-                    <ul id="messagesList"></ul>
-                </div>
-            </div>
-            <input type="text" id="input_box" placeholder="Type your message..." />
-        </div>
+﻿<link rel="stylesheet" type="text/css" href="~/css/site.css" />
+<div class="center_horizontally">
+    <p id="title">Chat</p>
+</div>
+<div id="chat_container" class="center_horizontally">
+    <div id="chat_box">
+        <ul id="messages"></ul>
+    </div>
+</div>
+<div id="input_container" class="center_horizontally">
+    <input id="input_box" type="text" />
 </div>
 <script src="~/lib/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>
