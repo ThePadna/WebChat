@@ -16,8 +16,8 @@ namespace ContosoUniversity.Data
             }
             var users = new UserModel[]
             {
-                new UserModel {Id="User1", hashedPassword="Pass1"},
-                new UserModel {Id="User2", hashedPassword="Pass2"}
+                new UserModel {Id="User1", Colour="#cc0066"},
+                new UserModel {Id="User2", Colour="#6600cc"}
             };
             foreach (UserModel user in users)
             {

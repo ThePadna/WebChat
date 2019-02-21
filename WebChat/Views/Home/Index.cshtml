@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<WebChat.Models.UserModel>
+
 <link rel="stylesheet" type="text/css" href="~/css/site.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div class="center_horizontally">
     <p id="title">Chat</p>
 </div>
@@ -12,14 +14,22 @@
     <input id="input_box" type="text" />
 </div>
 <div id="members" class="center_horizontally">
-    <ol>
-@foreach(var item in Model)
-{
-    <li>
-      @item.Id
-    </li>
-}
-    </ol>
+    @{
+        foreach (var item in Model)
+        {
+            @:<p id=@item.Id>@item.Id</p>
+        }
+    }
 </div>
+    <script>
+        @{
+            foreach (var item in Model)
+            {
+                @:var id = "@item.Id";
+                @:var colour = "@item.Colour";
+                @:$(("#" + id)).css("color", colour);
+            }
+        }
+    </script>
 <script src="~/lib/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>
