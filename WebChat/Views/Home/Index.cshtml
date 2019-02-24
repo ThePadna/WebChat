@@ -1,5 +1,12 @@
 ﻿@model IEnumerable<WebChat.Models.UserModel>
-
+<form id="login">
+    <label for="uname"><b></b></label>
+    <input type="text" placeholder="Enter Username..." name="uname" />
+    <label for="pswrd"><b></b></label>
+    <input type="text" placeholder="Enter Password..." name="pswrd" />
+    <button type="submit">Login</button>
+    <a href=""> <p id="no_account">Don't have an account?</p> </a>
+</form>
 <link rel="stylesheet" type="text/css" href="~/css/site.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div class="center_horizontally">
