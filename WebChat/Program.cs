@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using WebChat.DAL;
+using WebChat.Models;
 
 namespace WebChat
 {
@@ -24,7 +25,7 @@ namespace WebChat
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<UserContext>();
+                    var context = services.GetRequiredService<WebChatContext>();
                     DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)

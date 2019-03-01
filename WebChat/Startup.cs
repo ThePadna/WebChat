@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SignalRChat.Hubs;
+using WebChat.Areas.Identity.Data;
 using WebChat.DAL;
+using WebChat.Models;
 
 namespace WebChat
 {
@@ -29,7 +31,7 @@ namespace WebChat
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<UserContext>(options =>
+            services.AddDbContext<WebChatContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 
@@ -60,6 +62,7 @@ namespace WebChat
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseCookiePolicy();
             app.UseSignalR(routes =>
             {

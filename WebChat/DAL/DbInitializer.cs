@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using WebChat.Areas.Identity.Data;
 using WebChat.DAL;
 using WebChat.Models;
 
@@ -7,21 +8,21 @@ namespace ContosoUniversity.Data
 {
     public static class DbInitializer
     {
-        public static void Initialize(UserContext context)
+        public static void Initialize(WebChatContext context)
         {
             context.Database.EnsureCreated();
-            if(context.users.Any())
+            if(context.userList.Any())
             {
                 return;
             }
-            var users = new UserModel[]
+            var users = new WebChatUser[]
             {
-                new UserModel {Id="User1", Colour="#cc0066"},
-                new UserModel {Id="User2", Colour="#6600cc"}
+                new WebChatUser {Id="User1", Colour="#cc0066"},
+                new WebChatUser {Id="User2", Colour="#6600cc"}
             };
-            foreach (UserModel user in users)
+            foreach (WebChatUser user in users)
             {
-                context.users.Add(user);
+                context.userList.Add(user);
             }
             context.SaveChanges();
         }

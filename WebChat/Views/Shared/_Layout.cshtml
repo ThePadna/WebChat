@@ -6,6 +6,7 @@
     </head>
     <body>
         <partial name="_CookieConsentPartial" />
+        <partial name="_LoginPartial" />
 
         <div class="container body-content">
             @RenderBody()
@@ -29,4 +30,5 @@
             </script>
         </environment>
     </body>
+@RenderSection("Scripts", false);
 </html>

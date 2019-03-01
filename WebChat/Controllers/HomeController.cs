@@ -13,15 +13,15 @@ namespace WebChat.Controllers
     public class HomeController : Controller
     {
 
-        private readonly UserContext userContext;
-        public HomeController(UserContext context)
+        private readonly WebChatContext _WebChatContext;
+        public HomeController(WebChatContext context)
         {
-            this.userContext = context;
+            this._WebChatContext = context;
         }
 
         public async Task<IActionResult> Index()
         {
-            return View(await userContext.users.ToListAsync());
+            return View(await _WebChatContext.userList.ToListAsync());
         }
 
         public IActionResult About()
