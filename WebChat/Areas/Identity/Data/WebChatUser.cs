@@ -9,7 +9,7 @@ namespace WebChat.Areas.Identity.Data
     // Add profile data for application users by adding properties to the WebChatUser class
     public class WebChatUser : IdentityUser
     {
-        public override string Id { get; set; }
-        public string Colour { get; set; }
+        public string chatUsername { get; set; }
+        public string colour { get; set; }
     }
 }

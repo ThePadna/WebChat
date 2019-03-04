@@ -1,10 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using WebChat.Areas.Identity.Data;
-using WebChat.DAL;
 using WebChat.Models;
 
-namespace ContosoUniversity.Data
+namespace WebChat.DAL
 {
     public static class DbInitializer
     {
@@ -17,8 +15,8 @@ namespace ContosoUniversity.Data
             }
             var users = new WebChatUser[]
             {
-                new WebChatUser {Id="User1", Colour="#cc0066"},
-                new WebChatUser {Id="User2", Colour="#6600cc"}
+                new WebChatUser {chatUsername="User1", colour="#cc0066"},
+                new WebChatUser {chatUsername="User2", colour="#6600cc"}
             };
             foreach (WebChatUser user in users)
             {

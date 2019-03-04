@@ -16,7 +16,7 @@
     @{
         foreach (var item in Model)
         {
-            @:<p id=@item.Id>@item.Id</p>
+            @:<p id=@item.Id>@item.chatUsername</p>
         }
     }
 </div>
@@ -24,8 +24,8 @@
         @{
             foreach (var item in Model)
             {
-                @:var id = "@item.Id";
-                @:var colour = "@item.Colour";
+                @:var id = "@item.chatUsername";
+                @:var colour = "@item.colour";
                 @:$(("#" + id)).css("color", colour);
             }
         }
