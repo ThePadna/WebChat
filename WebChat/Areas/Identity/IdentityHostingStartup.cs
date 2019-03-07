@@ -16,12 +16,12 @@ namespace WebChat.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<WebChatContext>(options =>
+                services.AddDbContext<AppUserDBContext>(options =>
                     options.UseSqlServer(
-                        context.Configuration.GetConnectionString("WebChatContextConnection")));
+                        context.Configuration.GetConnectionString("DefaultConnection")));
 
-                services.AddDefaultIdentity<WebChatUser>()
-                    .AddEntityFrameworkStores<WebChatContext>();
+                services.AddDefaultIdentity<AppUser>()
+                    .AddEntityFrameworkStores<AppUserDBContext>();
             });
         }
     }

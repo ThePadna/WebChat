@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebChat.Areas.Identity.Data.WebChatUser>
+﻿@model IEnumerable<WebChat.Areas.Identity.Data.AppUser>
 <link rel="stylesheet" type="text/css" href="~/css/site.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div class="center_horizontally">
@@ -16,7 +16,7 @@
     @{
         foreach (var item in Model)
         {
-            @:<p id=@item.Id>@item.chatUsername</p>
+            @:<p id=@item.Id>@item.usertag</p>
         }
     }
 </div>
@@ -24,7 +24,7 @@
         @{
             foreach (var item in Model)
             {
-                @:var id = "@item.chatUsername";
+                @:var id = "@item.usertag";
                 @:var colour = "@item.colour";
                 @:$(("#" + id)).css("color", colour);
             }

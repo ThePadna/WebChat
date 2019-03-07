@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using WebChat.Areas.Identity.Data
-@inject SignInManager<WebChatUser> SignInManager
-@inject UserManager<WebChatUser> UserManager
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 {

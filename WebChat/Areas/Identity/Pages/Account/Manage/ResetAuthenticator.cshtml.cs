@@ -12,13 +12,13 @@ namespace WebChat.Areas.Identity.Pages.Account.Manage
 {
     public class ResetAuthenticatorModel : PageModel
     {
-        UserManager<WebChatUser> _userManager;
-        private readonly SignInManager<WebChatUser> _signInManager;
+        UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
         ILogger<ResetAuthenticatorModel> _logger;
 
         public ResetAuthenticatorModel(
-            UserManager<WebChatUser> userManager,
-            SignInManager<WebChatUser> signInManager,
+            UserManager<AppUser> userManager,
+            SignInManager<AppUser> signInManager,
             ILogger<ResetAuthenticatorModel> logger)
         {
             _userManager = userManager;
