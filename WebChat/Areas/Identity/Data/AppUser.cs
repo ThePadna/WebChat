@@ -8,7 +8,7 @@ namespace WebChat.Areas.Identity.Data
 {
     public class AppUser : IdentityUser
     {
-        public string usertag { get; set; }
-        public string colour { get; set; }
+        public string UserTag { get; set; }
+        public string Colour { get; set; }
     }
 }

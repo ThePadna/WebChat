@@ -15,8 +15,8 @@ namespace WebChat.DAL
             }
             var users = new AppUser[]
             {
-                new AppUser {usertag="User1", colour="#cc0066"},
-                new AppUser {usertag="User2", colour="#6600cc"}
+                new AppUser {UserTag="User1", Colour="#cc0066"},
+                new AppUser {UserTag="User2", Colour="#6600cc"}
             };
             foreach (AppUser user in users)
             {
