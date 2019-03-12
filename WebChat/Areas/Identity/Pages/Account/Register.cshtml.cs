@@ -41,8 +41,8 @@ namespace WebChat.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [Display(Name = "Usertag")]
-            public string Usertag { get; set; }
+            [Display(Name = "Username")]
+            public string Username { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -65,7 +65,7 @@ namespace WebChat.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new AppUser { UserTag = Input.Usertag, Colour = Input.Colour };
+                var user = new AppUser { UserName = Input.Username, Colour = Input.Colour };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
