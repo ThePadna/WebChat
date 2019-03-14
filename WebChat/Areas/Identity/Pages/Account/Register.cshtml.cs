@@ -67,8 +67,10 @@ namespace WebChat.Areas.Identity.Pages.Account
             {
                 var user = new AppUser { UserName = Input.Username, Colour = Input.Colour };
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                System.Diagnostics.Debug.WriteLine("Testing");
                 if (result.Succeeded)
                 {
+                    System.Diagnostics.Debug.WriteLine("Succeeded");
                     _logger.LogInformation("User created a new account with password.");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);

@@ -54,6 +54,7 @@ namespace WebChat
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -61,15 +62,12 @@ namespace WebChat
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseAuthentication();
             app.UseCookiePolicy();
             app.UseSignalR(routes =>
             {
                 routes.MapHub<ChatHub>("/chatHub");
             });
-            app.UseMvc();
         }
     }
 }

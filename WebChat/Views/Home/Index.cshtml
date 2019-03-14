@@ -14,10 +14,15 @@
 </div>
 <div id="members" class="center_horizontally">
     @{
+        int iter = 0;
         foreach (var item in Model)
         {
-            @:<p id=@item.Id>@item.UserName</p>
+            iter++;
+            @:<p id=@item.UserName>@item.UserName<span id="@iter">, </span> </p>
         }
+        <script>s
+            $("@iter").text = "";
+        </script>
     }
 </div>
     <script>
