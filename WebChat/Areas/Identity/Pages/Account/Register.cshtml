@@ -24,7 +24,26 @@
             </div>
             <div class="form-group">
                 <label asp-for="Input.Colour"></label>
-                <input asp-for="Input.Colour" class="form-control" />
+                <input id="colour_input" asp-for="Input.Colour" class="form-control" />
+                <div id="colour_picker">
+                    <script>
+                        $('#colour_input').hide();
+                        var colours = ['Blue', 'Green', 'Pink', 'Yellow', 'Purple', 'Lime', 'Indigo'];
+                        for (var i = 0; i <= colours.length; i++) {
+                            $('<div/>', {
+                                id: colours[i],
+                                class: 'colour_picker_box'
+                            }).appendTo('#colour_picker')
+                                .css("background-color", colours[i]);
+                        }
+                        $('.colour_picker_box').click(function() {
+                            var colour_input = $('#colour_input');
+                            if (colour_input.val().length > 0) $('#' + colour_input.val()).css('height', '20px').css("width", '20px');
+                            colour_input.val(colours[i]);
+                            $('#' + this.id).css("height", '30px').css("width", '30px');
+                        });
+                    </script>
+                </div>
                 <span asp-validation-for="Input.Colour" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-default">Register</button>
