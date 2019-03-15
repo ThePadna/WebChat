@@ -33,3 +33,8 @@ ul {
     position: relative;
     float: left;
 }
+
+.colour_picker_box:hover {
+    height: 30px;
+    width: 30px;
+}
