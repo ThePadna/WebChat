@@ -51,7 +51,7 @@ namespace WebChat.Areas.Identity.Pages.Account
             public string Password { get; set; }
 
             [Required]
-            [Display(Name = "Colour - Enter the colour you wish your username to be")]
+            [Display(Name = "Pick your username colour")]
             public string Colour { get; set; }
         }
 

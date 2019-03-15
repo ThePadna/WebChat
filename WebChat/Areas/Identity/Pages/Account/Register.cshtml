@@ -28,18 +28,21 @@
                 <div id="colour_picker">
                     <script>
                         $('#colour_input').hide();
-                        var colours = ['Blue', 'Green', 'Pink', 'Yellow', 'Purple', 'Lime', 'Indigo'];
-                        for (var i = 0; i <= colours.length; i++) {
+                        var colours = ['Blue', 'Green', 'Pink', 'Yellow', 'Purple', 'Lime', 'Indigo', 'Black'];
+                        for (var i = 0; i < colours.length; i++) {
                             $('<div/>', {
                                 id: colours[i],
                                 class: 'colour_picker_box'
                             }).appendTo('#colour_picker')
                                 .css("background-color", colours[i]);
                         }
-                        $('.colour_picker_box').click(function() {
+                        $('.colour_picker_box').click(function (ev) {
                             var colour_input = $('#colour_input');
-                            if (colour_input.val().length > 0) $('#' + colour_input.val()).css('height', '20px').css("width", '20px');
-                            colour_input.val(colours[i]);
+                            if (colour_input.val().length > 0) {
+                                $('#' + colour_input.val()).css('height', '20px').css("width", '20px');
+                            }
+                            var colour = this.id;
+                            colour_input.attr('value', colour);
                             $('#' + this.id).css("height", '30px').css("width", '30px');
                         });
                     </script>
