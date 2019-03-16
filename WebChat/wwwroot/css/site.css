@@ -1,5 +1,12 @@
 ﻿#title {
     font-size: 100px;
+    font-family: 'Indie Flower';
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+body {
+    background-color: lightcoral;
 }
 
 .center_horizontally {
@@ -8,16 +15,25 @@
 }
 
 #chat_box {
+    background-color: black;
+    opacity: 0.5;
     overflow: hidden;
-    border: 1px solid black;
-    width: 600px;
-    height: 300px;
+    border: 1px solid white;
+    width: 1000px;
+    height: 400px;
     overflow-y: scroll;
 }
 
+#messages {
+    color: white;
+}
+
 #input_box {
-    border: 1px solid black;
-    width: 600px;
+    color: white;
+    background-color: black;
+    opacity: 0.5;
+    border: 1px solid white;
+    width: 1000px;
     height: 20px;
     bottom: 0;
 }

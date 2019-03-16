@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<WebChat.Areas.Identity.Data.AppUser>
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 <div class="center_horizontally">
-    <p id="title">Chat</p>
+    <p id="title">Chat Room</p>
 </div>
 <div id="chat_container" class="center_horizontally">
     <div id="chat_box">
@@ -16,10 +17,10 @@
         foreach (var item in Model)
         {
             iter++;
-            @:<p id=@item.UserName>@item.UserName<span id="@iter">, </span> </p>
+            @:<p><span id=@item.UserName>@item.UserName</span><span id="@iter">,&nbsp;</span></p>
         }
-        <script>s
-            $("@iter").text = "";
+        <script>
+            $("#" + @iter).text("");
         </script>
     }
 </div>
