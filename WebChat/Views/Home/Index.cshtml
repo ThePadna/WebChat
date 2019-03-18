@@ -24,7 +24,10 @@
         </script>
     }
 </div>
-    <script>
+<script src="~/lib/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
+<script>
+
         @{
             foreach (var item in Model)
             {
@@ -32,7 +35,14 @@
                 @:var colour = "@item.Colour";
                 @:$(("#" + id)).css("color", colour);
             }
+            if (User.Identity.IsAuthenticated)
+            {
+               @:listenForMessage(@User.Identity.Name);
+               @:console.log(@User.Identity.Name);
+            }
+            else
+            {
+               @:listenForMessage(null);
+            }
         }
-    </script>
-<script src="~/lib/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/chat.js"></script>
+</script>
