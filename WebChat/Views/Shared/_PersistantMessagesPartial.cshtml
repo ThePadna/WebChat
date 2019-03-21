@@ -1,0 +1,9 @@
+﻿@model IEnumerable<WebChat.Models.MessageModel>
+
+@foreach(var item in Model)
+{
+    <script>
+        console.log("MessagePartial");
+        console.log(@item.Contents);
+    </script>
+}

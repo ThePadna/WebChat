@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using WebChat.Areas.Identity.Data;
+using WebChat.Areas.Identity.Data.Message;
 using WebChat.DAL;
 
 namespace WebChat
@@ -19,8 +20,10 @@ namespace WebChat
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<AppUserDBContext>();
-                    DbInitializer.Initialize(context);
+                    var appUserDBContext = services.GetRequiredService<AppUserDBContext>();
+                    DbInitializer.Initialize(appUserDBContext);
+                    var messageModelDBContext = services.GetRequiredService<MessageModelDBContext>();
+                    DbInitializer.Initialize(messageModelDBContext);
                 }
                 catch (Exception ex)
                 {

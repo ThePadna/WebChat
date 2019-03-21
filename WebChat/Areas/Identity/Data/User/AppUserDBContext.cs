@@ -9,11 +9,12 @@ namespace WebChat.Areas.Identity.Data
 {
     public class AppUserDBContext : IdentityDbContext<AppUser>
     {
-        public AppUserDBContext(DbContextOptions options) : base(options)
+        public DbSet<AppUser> userList { get; set; }
+
+        public AppUserDBContext(DbContextOptions<AppUserDBContext> options) : base(options)
         {
         }
 
-        public DbSet<AppUser> userList { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

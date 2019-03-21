@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebChat.Areas.Identity.Data;
+using WebChat.Areas.Identity.Data.Message;
 using WebChat.DAL;
 using WebChat.Models;
 
@@ -14,34 +15,27 @@ namespace WebChat.Controllers
     public class HomeController : Controller
     {
 
-        private readonly AppUserDBContext _WebChatDBContext;
-        public HomeController(AppUserDBContext context)
+        private readonly AppUserDBContext _AppUserDBContext;
+        private readonly MessageModelDBContext _MessageModelDBContext;
+
+        public HomeController(AppUserDBContext userContext, MessageModelDBContext messageContext)
         {
-            this._WebChatDBContext = context;
+            if(messageContext == null)
+            {
+                Debug.WriteLine("ITS FKING null");
+            } else Debug.WriteLine("ITS NOT");
+            this._AppUserDBContext = userContext;
+            this._MessageModelDBContext = messageContext;
         }
 
         public async Task<IActionResult> Index()
         {
-            return View(await _WebChatDBContext.userList.ToListAsync());
+            return View(await _AppUserDBContext.userList.ToListAsync());
         }
-
-        public IActionResult About()
+        
+        public async Task<IActionResult> _PersistantMessagesPartial()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            return PartialView(await _MessageModelDBContext.messageList.ToListAsync());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,4 +1,5 @@
 ﻿var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+var input = document.getElementById('input_box'), messages = document.getElementById("messages");
 
 connection.on("ReceiveMessage", function (user, message) {
     var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -14,19 +15,25 @@ connection.start().then(() => {
     return console.error(err.toString());
     });
 
-function listenForMessage(usr) {
-    let input = document.getElementById('input_box');
+function listenForMessage(user) {
     input.onkeypress = function (ev) {
         if (ev.which === 13) {
-            if(usr === null) {
+            if(user === null) {
                 let li = document.createElement("li");
                 li.textContent = "You must be logged in to send a chat message!";
-                document.getElementById("messages").appendChild(li);
+                messages.appendChild(li);
                 return;
             }
-            console.log(usr);
-            connection.invoke("SendMessage", usr.textContent, input.value);
+            connection.invoke("SendMessage", user.textContent, input.value);
             input.value = '';
         }
+    }
+}
+
+function fillChat(messageList) {
+    for (var i = 0; i <= messages.length; i++) {
+        let li = document.createElement("li");
+        li.textContent = messages[i];
+        messages.appendChild(li);
     }
 }

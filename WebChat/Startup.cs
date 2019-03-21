@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SignalRChat.Hubs;
 using WebChat.Areas.Identity.Data;
+using WebChat.Areas.Identity.Data.Message;
 using WebChat.DAL;
 using WebChat.Models;
 
@@ -34,6 +35,8 @@ namespace WebChat
 
             /* Register EF DB context */
             services.AddDbContext<AppUserDBContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<MessageModelDBContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
