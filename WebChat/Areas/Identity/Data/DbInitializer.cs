@@ -27,18 +27,7 @@ namespace WebChat.DAL
         public static void Initialize(MessageModelDBContext context)
         {
             context.Database.EnsureCreated();
-            if(context.messageList.Any())
-            {
-                return;
-            }
-            MessageModel[] messages = new MessageModel[]
-            {
-                new MessageModel {Sender = "Nalo", Date = new System.DateTime(), Contents = "I AM A MONSTE43RRR"}
-            };
-            foreach (MessageModel msg in messages)
-            {
-                context.messageList.Add(msg);
-            }
+            //filled in PersistantMessagesPartialModel.cs
             context.SaveChanges();
         }
     }

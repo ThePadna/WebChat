@@ -1,9 +1,22 @@
-﻿@model IEnumerable<WebChat.Models.MessageModel>
+﻿@using System.Diagnostics;
+<script>
+    console.log("test");
 
-@foreach(var item in Model)
-{
-    <script>
-        console.log("MessagePartial");
-        console.log(@item.Contents);
-    </script>
+</script>
+@{
+    if (PersistantMessagesPartialModel.Messages == null)
+    {
+        Debug.WriteLine("Null");
+    }
+    else {
+        Debug.WriteLine("NotNull");
+        foreach(var m in PersistantMessagesPartialModel.Messages)
+        {
+            <script>
+                window.onload = function () {
+                    $('#messages').append("[@m.Date] " + "@m.Sender" + ": " + "@m.Contents");
+                };
+            </script>
+        }
+    }
 }

@@ -16,26 +16,16 @@ namespace WebChat.Controllers
     {
 
         private readonly AppUserDBContext _AppUserDBContext;
-        private readonly MessageModelDBContext _MessageModelDBContext;
 
-        public HomeController(AppUserDBContext userContext, MessageModelDBContext messageContext)
+        public HomeController(AppUserDBContext userContext)
         {
-            if(messageContext == null)
-            {
-                Debug.WriteLine("ITS FKING null");
-            } else Debug.WriteLine("ITS NOT");
             this._AppUserDBContext = userContext;
-            this._MessageModelDBContext = messageContext;
         }
 
         public async Task<IActionResult> Index()
         {
+            Debug.WriteLine("debug1");
             return View(await _AppUserDBContext.userList.ToListAsync());
-        }
-        
-        public async Task<IActionResult> _PersistantMessagesPartial()
-        {
-            return PartialView(await _MessageModelDBContext.messageList.ToListAsync());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

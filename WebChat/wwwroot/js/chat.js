@@ -29,11 +29,3 @@ function listenForMessage(user) {
         }
     }
 }
-
-function fillChat(messageList) {
-    for (var i = 0; i <= messages.length; i++) {
-        let li = document.createElement("li");
-        li.textContent = messages[i];
-        messages.appendChild(li);
-    }
-}
