@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebChat.Areas.Identity.Data.AppUser>
+﻿@model IndexViewModel
 <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 <div class="center_horizontally">
     <p id="title">Chat Room</p>
@@ -14,7 +14,7 @@
 <div id="members" class="center_horizontally">
     @{
         int iter = 0;
-        foreach (var item in Model)
+        foreach (var item in Model._userList)
         {
             iter++;
             @:<p><span id=@item.UserName>@item.UserName</span><span id="@iter">,&nbsp;</span></p>
@@ -28,7 +28,7 @@
 <script src="~/js/chat.js"></script>
 <script>
     @{
-            foreach (var item in Model)
+            foreach (var item in Model._userList)
             {
                 @:var id = "@item.UserName";
                 @:var colour = "@item.Colour";
@@ -45,3 +45,4 @@
             }
         }
 </script>
+<partial name="_PersistantMessagesPartial" />

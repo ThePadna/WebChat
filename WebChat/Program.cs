@@ -20,10 +20,11 @@ namespace WebChat
                 var services = scope.ServiceProvider;
                 try
                 {
+                    DbInitializer dbInitializer = new DbInitializer();
                     var appUserDBContext = services.GetRequiredService<AppUserDBContext>();
-                    DbInitializer.Initialize(appUserDBContext);
+                    dbInitializer.Initialize(appUserDBContext);
                     var messageModelDBContext = services.GetRequiredService<MessageModelDBContext>();
-                    DbInitializer.Initialize(messageModelDBContext);
+                    dbInitializer.Initialize(messageModelDBContext);
                 }
                 catch (Exception ex)
                 {

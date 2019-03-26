@@ -9,6 +9,8 @@ namespace WebChat.Areas.Identity.Data.Message
 {
     public class MessageModelDBContext : DbContext
     {
+        public DbSet<MessageModel> messageList { get; set; }
+
         public MessageModelDBContext(DbContextOptions<MessageModelDBContext> options) : base(options)
         {
         }

@@ -14,18 +14,19 @@ namespace WebChat.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly AppUserDBContext _appUserDBContext;
+        private readonly MessageModelDBContext _messageModelDBContext;
 
-        private readonly AppUserDBContext _AppUserDBContext;
-
-        public HomeController(AppUserDBContext userContext)
+        public HomeController(MessageModelDBContext messageModelDBContext, AppUserDBContext appUserDBContext)
         {
-            this._AppUserDBContext = userContext;
+            this._messageModelDBContext = messageModelDBContext;
+            this._appUserDBContext = appUserDBContext;
         }
 
-        public async Task<IActionResult> Index()
+        public ActionResult Index()
         {
-            Debug.WriteLine("debug1");
-            return View(await _AppUserDBContext.userList.ToListAsync());
+            IndexViewModel viewModel = new IndexViewModel(this._appUserDBContext.userList, this._messageModelDBContext.messageList);
+            return View(viewModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

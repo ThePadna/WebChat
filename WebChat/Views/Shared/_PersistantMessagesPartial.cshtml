@@ -1,22 +1,11 @@
-﻿@using System.Diagnostics;
-<script>
-    console.log("test");
-
-</script>
+﻿@model IndexViewModel
 @{
-    if (PersistantMessagesPartialModel.Messages == null)
+    foreach (var m in Model._messageList)
     {
-        Debug.WriteLine("Null");
-    }
-    else {
-        Debug.WriteLine("NotNull");
-        foreach(var m in PersistantMessagesPartialModel.Messages)
-        {
-            <script>
+        <script>
                 window.onload = function () {
-                    $('#messages').append("[@m.Date] " + "@m.Sender" + ": " + "@m.Contents");
+                    $('#messages').append("[@m.Date] " + "@m.Sender" + ": " + "@m.Contents")
                 };
-            </script>
-        }
+        </script>
     }
 }
