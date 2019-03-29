@@ -21,14 +21,17 @@ namespace WebChat.Migrations.MessageModelDB
 
             modelBuilder.Entity("WebChat.Models.MessageModel", b =>
                 {
-                    b.Property<string>("Sender")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Contents");
 
                     b.Property<DateTime>("Date");
 
-                    b.HasKey("Sender");
+                    b.Property<string>("Sender");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Message");
                 });

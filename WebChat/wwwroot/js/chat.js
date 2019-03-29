@@ -1,31 +1,34 @@
-﻿var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
-var input = document.getElementById('input_box'), messages = document.getElementById("messages");
+﻿var _connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+var $_input = $('#input_box'), $_messages = $('#messages');
 
-connection.on("ReceiveMessage", function (user, message) {
-    var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    var encodedMsg = user + ": " + msg;
-    var li = document.createElement("li");
-    li.textContent = encodedMsg;
-    document.getElementById("messages").appendChild(li);
+_connection.on("ReceiveMessage", function (user, message) {
+    let msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"), encodedMsg = user + ": " + msg, li = $('<li></li>');
+    li.text(encodedMsg);
+    $_messages.append(li);
 });
 
-connection.start().then(() => {
-   
+_connection.start().then(() => {
 }).catch(function (err) {
     return console.error(err.toString());
-    });
+});
 
 function listenForMessage(user) {
-    input.onkeypress = function (ev) {
+    $_input.keypress(function (ev) {
         if (ev.which === 13) {
-            if(user === null) {
-                let li = document.createElement("li");
-                li.textContent = "You must be logged in to send a chat message!";
-                messages.appendChild(li);
+            if (user === null) {
+                let li = $('<li></li>');
+                li.text("You must be logged in to send a chat message!");
+                $_messages.append(li);
+                scrollBottom();
                 return;
             }
-            connection.invoke("SendMessage", user.textContent, input.value);
-            input.value = '';
+            _connection.invoke("SendMessage", user.textContent, $_input.val());
+            scrollBottom();
         }
-    }
+    });
+}
+
+function scrollBottom() {
+    let $chatBox = $('#chat_box');
+    $chatBox.scrollTop($chatBox[0].scrollHeight)
 }

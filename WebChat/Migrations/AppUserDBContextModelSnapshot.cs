@@ -140,6 +140,8 @@ namespace WebChat.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<string>("Colour");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -170,10 +172,6 @@ namespace WebChat.Migrations
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
-
-                    b.Property<string>("colour");
-
-                    b.Property<string>("username");
 
                     b.HasKey("Id");
 

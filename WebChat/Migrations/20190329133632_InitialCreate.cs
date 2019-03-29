@@ -41,8 +41,7 @@ namespace WebChat.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    usertag = table.Column<string>(nullable: true),
-                    colour = table.Column<string>(nullable: true)
+                    Colour = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

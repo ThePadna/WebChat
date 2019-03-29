@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebChat.Migrations.MessageModelDB
@@ -11,13 +12,15 @@ namespace WebChat.Migrations.MessageModelDB
                 name: "Message",
                 columns: table => new
                 {
-                    Sender = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Sender = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
                     Contents = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Message", x => x.Sender);
+                    table.PrimaryKey("PK_Message", x => x.Id);
                 });
         }
 

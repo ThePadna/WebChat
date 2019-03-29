@@ -26,23 +26,31 @@
 </div>
 <script src="~/lib/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>
-<script>
-    @{
-            foreach (var item in Model._userList)
-            {
-                @:var id = "@item.UserName";
-                @:var colour = "@item.Colour";
-                @:$(("#" + id)).css("color", colour);
-            }
-            if (User.Identity.IsAuthenticated)
-            {
-               @:listenForMessage(@User.Identity.Name);
-               @:console.log(@User.Identity.Name);
-            }
-            else
-            {
-               @:listenForMessage(null);
-            }
-        }
-</script>
+@{
+    foreach (var item in Model._userList)
+    {
+        <script>
+        var id = "@item.UserName";
+        var colour = "@item.Colour";
+        $(("#" + id)).css("color", colour);
+        </script>
+    }
+    if (User.Identity.IsAuthenticated)
+    {
+        <script>
+        $(window).bind('load', () => {
+            listenForMessage(@User.Identity.Name);
+        });
+        </script>
+    }
+    else
+    {
+        <script>
+        $(window).bind('load', () => {
+            console.log("load");
+            listenForMessage(null);
+        });
+        </script>
+    }
+}
 <partial name="_PersistantMessagesPartial" />

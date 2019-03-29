@@ -1,11 +1,9 @@
-﻿@model IndexViewModel
-@{
-    foreach (var m in Model._messageList)
-    {
-        <script>
-                window.onload = function () {
-                    $('#messages').append("[@m.Date] " + "@m.Sender" + ": " + "@m.Contents")
-                };
-        </script>
-    }
-}
+﻿<script>
+    $('document').ready(() => {
+                @foreach(var m in Model._messageList)
+                {
+                    @:$('#messages').append("<li> @m.Date @m.Sender : @m.Contents </li>")
+                }
+        scrollBottom();
+    });
+</script>

@@ -10,7 +10,7 @@ using WebChat.Areas.Identity.Data.Message;
 namespace WebChat.Migrations.MessageModelDB
 {
     [DbContext(typeof(MessageModelDBContext))]
-    [Migration("20190321134942_InitialCreate")]
+    [Migration("20190329133900_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,14 +23,17 @@ namespace WebChat.Migrations.MessageModelDB
 
             modelBuilder.Entity("WebChat.Models.MessageModel", b =>
                 {
-                    b.Property<string>("Sender")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Contents");
 
                     b.Property<DateTime>("Date");
 
-                    b.HasKey("Sender");
+                    b.Property<string>("Sender");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Message");
                 });

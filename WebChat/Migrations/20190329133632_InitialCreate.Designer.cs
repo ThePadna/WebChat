@@ -10,7 +10,7 @@ using WebChat.Areas.Identity.Data;
 namespace WebChat.Migrations
 {
     [DbContext(typeof(AppUserDBContext))]
-    [Migration("20190307024605_InitialCreate")]
+    [Migration("20190329133632_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -142,6 +142,8 @@ namespace WebChat.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<string>("Colour");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -172,10 +174,6 @@ namespace WebChat.Migrations
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
-
-                    b.Property<string>("colour");
-
-                    b.Property<string>("username");
 
                     b.HasKey("Id");
 
