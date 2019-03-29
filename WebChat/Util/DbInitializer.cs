@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using WebChat.Areas.Identity.Data;
 using WebChat.Areas.Identity.Data.Message;
-using WebChat.Models;
 
 namespace WebChat.DAL
 {
